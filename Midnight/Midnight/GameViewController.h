@@ -14,6 +14,7 @@
     NSArray * imageArrayBatFlyRight;
     NSArray * imageArrayBatFlyLeft;
     
+    float valueX;
     UIImageView *batFly;
 }
 @end
