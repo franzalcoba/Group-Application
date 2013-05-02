@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface GameViewController : UIViewController
-
+{
+    NSArray * imageArrayBatFlyUpDown;
+    NSArray * imageArrayBatFlyRight;
+    NSArray * imageArrayBatFlyLeft;
+    
+    UIImageView *batFly;
+}
 @end

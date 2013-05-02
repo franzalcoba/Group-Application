@@ -28,23 +28,51 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 
-	NSArray * imageArray  = [[NSArray alloc] initWithObjects:
+	imageArrayBatFlyUpDown  = [[NSArray alloc] initWithObjects:
                              [UIImage imageNamed:@"1.png"],
                              [UIImage imageNamed:@"2.png"],
                              [UIImage imageNamed:@"3.png"],
-                             /*[UIImage imageNamed:@"4.png"],
-                             [UIImage imageNamed:@"5.png"],
-                             [UIImage imageNamed:@"6.png"],
-                             [UIImage imageNamed:@"7.png"],
-                             [UIImage imageNamed:@"8.png"],
-                             [UIImage imageNamed:@"9.png"],
-                             [UIImage imageNamed:@"10.png"],
-                             [UIImage imageNamed:@"11.png"],
-                             [UIImage imageNamed:@"12.png"],*/
                              nil];
-	UIImageView * batFly = [[UIImageView alloc] initWithFrame:
+    imageArrayBatFlyLeft= [[NSArray alloc] initWithObjects:
+                               [UIImage imageNamed:@"4.png"],
+                               [UIImage imageNamed:@"5.png"],
+                               [UIImage imageNamed:@"6.png"],
+                               nil];
+    imageArrayBatFlyRight  = [[NSArray alloc] initWithObjects:
+                               [UIImage imageNamed:@"7.png"],
+                               [UIImage imageNamed:@"8.png"],
+                               [UIImage imageNamed:@"9.png"],
+                               nil];
+    
+	batFly = [[UIImageView alloc] initWithFrame:
                              CGRectMake(100, 125, 150, 130)];
-	batFly.animationImages = imageArray;
+    
+    [self performSelector:@selector(batFlyRight) withObject:nil afterDelay:.50];
+    [self performSelector:@selector(batFlyLeft) withObject:nil afterDelay:1];
+    [self performSelector:@selector(batFlyUpDown) withObject:nil afterDelay:1.5];
+}
+
+- (void)batFlyUpDown
+{
+    batFly.animationImages = imageArrayBatFlyUpDown;
+	batFly.animationDuration = 0.5;
+	batFly.contentMode = UIViewContentModeBottomLeft;
+	[self.view addSubview:batFly];
+	[batFly startAnimating];
+}
+
+- (void)batFlyLeft
+{
+    batFly.animationImages = imageArrayBatFlyLeft;
+	batFly.animationDuration = 0.5;
+	batFly.contentMode = UIViewContentModeBottomLeft;
+	[self.view addSubview:batFly];
+	[batFly startAnimating];
+}
+
+- (void)batFlyRight
+{
+    batFly.animationImages = imageArrayBatFlyRight;
 	batFly.animationDuration = 0.5;
 	batFly.contentMode = UIViewContentModeBottomLeft;
 	[self.view addSubview:batFly];
