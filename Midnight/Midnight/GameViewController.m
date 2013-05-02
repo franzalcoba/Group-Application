@@ -8,6 +8,8 @@
 
 #import "GameViewController.h"
 
+#define bat_RADIUS 15
+
 @interface GameViewController ()
 
 @end
@@ -18,15 +20,29 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
+}
+
+-(void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
+    
+    valueX = acceleration.y*25.0;
+    
+    int newX = (int)(batFly.center.x + valueX);
+    
+    if (newX > 540 - bat_RADIUS)
+        newX = 540 - bat_RADIUS;
+    
+    if (newX < 55 + bat_RADIUS)
+        newX = 55 + bat_RADIUS;
+    
+    CGPoint newCenter = CGPointMake(newX, batFly.center.y);
+    batFly.center = newCenter;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
 
 	imageArrayBatFlyUpDown  = [[NSArray alloc] initWithObjects:
                              [UIImage imageNamed:@"1.png"],
@@ -77,12 +93,27 @@
 	batFly.contentMode = UIViewContentModeBottomLeft;
 	[self.view addSubview:batFly];
 	[batFly startAnimating];
+    
+    [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1.0/30.0];
+    [[UIAccelerometer sharedAccelerometer] setDelegate:self];
+    [batFly release];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+}
+
+-(void)dealloc
+{
+    [[UIAccelerometer sharedAccelerometer]setDelegate:nil];
+    [super dealloc];
+    
+}
+-(void)viewDidUnload
+{
+    batFly = nil;
+    [[UIAccelerometer sharedAccelerometer]setDelegate:nil];
 }
 
 @end
