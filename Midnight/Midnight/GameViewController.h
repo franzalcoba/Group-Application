@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GameViewController : UIViewController
+@interface GameViewController : UIViewController <UIAccelerometerDelegate>
+{
+    float valueX;
+    float valueY;
+    UIImageView *batFly;
+}
 
 @end
