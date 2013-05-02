@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		105F53E917324F2D006CA762 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 105F53E617324F2D006CA762 /* 3.png */; };
+		105F53EA17324F2D006CA762 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 105F53E717324F2D006CA762 /* 2.png */; };
+		105F53EB17324F2D006CA762 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 105F53E817324F2D006CA762 /* 1.png */; };
+		105F53EE17325041006CA762 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 105F53ED17325041006CA762 /* GameViewController.m */; };
 		108C9F3D173246E2006FB730 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 108C9F3C173246E2006FB730 /* UIKit.framework */; };
 		108C9F3F173246E2006FB730 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 108C9F3E173246E2006FB730 /* Foundation.framework */; };
 		108C9F41173246E2006FB730 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 108C9F40173246E2006FB730 /* CoreGraphics.framework */; };
@@ -19,6 +23,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		105F53E617324F2D006CA762 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		105F53E717324F2D006CA762 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		105F53E817324F2D006CA762 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		105F53EC17325041006CA762 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		105F53ED17325041006CA762 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		108C9F39173246E2006FB730 /* Midnight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Midnight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		108C9F3C173246E2006FB730 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		108C9F3E173246E2006FB730 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -48,6 +57,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		105F53E417324EFC006CA762 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				105F53E517324F0A006CA762 /* Bat Sprites */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		105F53E517324F0A006CA762 /* Bat Sprites */ = {
+			isa = PBXGroup;
+			children = (
+				105F53E617324F2D006CA762 /* 3.png */,
+				105F53E717324F2D006CA762 /* 2.png */,
+				105F53E817324F2D006CA762 /* 1.png */,
+			);
+			name = "Bat Sprites";
+			sourceTree = "<group>";
+		};
 		108C9F30173246E2006FB730 = {
 			isa = PBXGroup;
 			children = (
@@ -78,8 +105,11 @@
 		108C9F42173246E2006FB730 /* Midnight */ = {
 			isa = PBXGroup;
 			children = (
+				105F53E417324EFC006CA762 /* Assets */,
 				108C9F4B173246E2006FB730 /* AppDelegate.h */,
 				108C9F4C173246E2006FB730 /* AppDelegate.m */,
+				105F53EC17325041006CA762 /* GameViewController.h */,
+				105F53ED17325041006CA762 /* GameViewController.m */,
 				108C9F43173246E2006FB730 /* Supporting Files */,
 			);
 			path = Midnight;
@@ -154,6 +184,9 @@
 				108C9F4F173246E2006FB730 /* Default.png in Resources */,
 				108C9F51173246E2006FB730 /* Default@2x.png in Resources */,
 				108C9F53173246E2006FB730 /* Default-568h@2x.png in Resources */,
+				105F53E917324F2D006CA762 /* 3.png in Resources */,
+				105F53EA17324F2D006CA762 /* 2.png in Resources */,
+				105F53EB17324F2D006CA762 /* 1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +199,7 @@
 			files = (
 				108C9F49173246E2006FB730 /* main.m in Sources */,
 				108C9F4D173246E2006FB730 /* AppDelegate.m in Sources */,
+				105F53EE17325041006CA762 /* GameViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +312,7 @@
 				108C9F58173246E2006FB730 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
