@@ -123,7 +123,6 @@
 		108C9F42173246E2006FB730 /* Midnight */ = {
 			isa = PBXGroup;
 			children = (
-				105F53E417324EFC006CA762 /* Assets */,
 				108C9F4B173246E2006FB730 /* AppDelegate.h */,
 				108C9F4C173246E2006FB730 /* AppDelegate.m */,
 				105F53EC17325041006CA762 /* GameViewController.h */,
@@ -136,6 +135,7 @@
 		108C9F43173246E2006FB730 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				105F53E417324EFC006CA762 /* Assets */,
 				108C9F44173246E2006FB730 /* Midnight-Info.plist */,
 				108C9F45173246E2006FB730 /* InfoPlist.strings */,
 				108C9F48173246E2006FB730 /* main.m */,
@@ -298,10 +298,14 @@
 		108C9F57173246E2006FB730 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jhermin Cruz (723WF65B7J)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jhermin Cruz (723WF65B7J)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Midnight/Midnight-Prefix.pch";
 				INFOPLIST_FILE = "Midnight/Midnight-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4A3D8327-8EDA-4453-9B28-5BC7C04B2CA4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4A3D8327-8EDA-4453-9B28-5BC7C04B2CA4";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -309,10 +313,14 @@
 		108C9F58173246E2006FB730 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jhermin Cruz (723WF65B7J)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jhermin Cruz (723WF65B7J)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Midnight/Midnight-Prefix.pch";
 				INFOPLIST_FILE = "Midnight/Midnight-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4A3D8327-8EDA-4453-9B28-5BC7C04B2CA4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4A3D8327-8EDA-4453-9B28-5BC7C04B2CA4";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
