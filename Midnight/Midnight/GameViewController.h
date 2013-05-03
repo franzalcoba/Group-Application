@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GameViewController : UIViewController
+@interface GameViewController : UIViewController <UIAccelerometerDelegate>
 {
     NSArray * imageArrayBatFlyUpDown;
     NSArray * imageArrayBatFlyRight;
     NSArray * imageArrayBatFlyLeft;
     
     float valueX;
+    int newX;
     UIImageView *batFly;
 }
 @end
