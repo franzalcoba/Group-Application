@@ -26,9 +26,9 @@
 
 -(void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
     
-    valueX = acceleration.y*25.0;
+    valueX = acceleration.y * 25.0;
     
-    int newX = (int)(batFly.center.x + valueX);
+    newX = (int)(batFly.center.x + valueX);
     
     if (newX > 540 - bat_RADIUS)
         newX = 540 - bat_RADIUS;
@@ -38,65 +38,80 @@
     
     CGPoint newCenter = CGPointMake(newX, batFly.center.y);
     batFly.center = newCenter;
+    //[self playerTilt];
+}
+
+-(void)playerTilt
+{
+    
 }
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+    
 
-	imageArrayBatFlyUpDown  = [[NSArray alloc] initWithObjects:
-                             [UIImage imageNamed:@"1.png"],
-                             [UIImage imageNamed:@"2.png"],
-                             [UIImage imageNamed:@"3.png"],
-                             nil];
-    imageArrayBatFlyLeft= [[NSArray alloc] initWithObjects:
-                               [UIImage imageNamed:@"4.png"],
-                               [UIImage imageNamed:@"5.png"],
-                               [UIImage imageNamed:@"6.png"],
-                               nil];
-    imageArrayBatFlyRight  = [[NSArray alloc] initWithObjects:
-                               [UIImage imageNamed:@"7.png"],
-                               [UIImage imageNamed:@"8.png"],
-                               [UIImage imageNamed:@"9.png"],
-                               nil];
+	batFly = [[UIImageView alloc] initWithFrame:CGRectMake(100, 125, 150, 130)];
     
-	batFly = [[UIImageView alloc] initWithFrame:
-                             CGRectMake(100, 125, 150, 130)];
+    [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1.0/30.0];
+    [[UIAccelerometer sharedAccelerometer] setDelegate:self];
     
-    [self performSelector:@selector(batFlyRight) withObject:nil afterDelay:.50];
-    [self performSelector:@selector(batFlyLeft) withObject:nil afterDelay:1];
-    [self performSelector:@selector(batFlyUpDown) withObject:nil afterDelay:1.5];
+    if (newX <= 0){
+        [self batFlyLeft];
+        DLog(@"aw %d",newX);
+    } else {
+        [self batFlyRight];
+        DLog(@"we");
+    }
+    
+    [batFly release];
+    [super viewDidLoad];
 }
 
-- (void)batFlyUpDown
+-(void)batFlyUpDown
 {
+    imageArrayBatFlyUpDown  = [[NSArray alloc] initWithObjects:
+                               [UIImage imageNamed:@"1.png"],
+                               [UIImage imageNamed:@"2.png"],
+                               [UIImage imageNamed:@"3.png"],nil];
     batFly.animationImages = imageArrayBatFlyUpDown;
 	batFly.animationDuration = 0.5;
 	batFly.contentMode = UIViewContentModeBottomLeft;
 	[self.view addSubview:batFly];
 	[batFly startAnimating];
+    [imageArrayBatFlyUpDown release];
 }
 
 - (void)batFlyLeft
 {
+    imageArrayBatFlyLeft= [[NSArray alloc] initWithObjects:
+                           [UIImage imageNamed:@"4.png"],
+                           [UIImage imageNamed:@"5.png"],
+                           [UIImage imageNamed:@"6.png"],
+                           nil];
+    
     batFly.animationImages = imageArrayBatFlyLeft;
 	batFly.animationDuration = 0.5;
 	batFly.contentMode = UIViewContentModeBottomLeft;
 	[self.view addSubview:batFly];
 	[batFly startAnimating];
+    [imageArrayBatFlyLeft release];
 }
 
 - (void)batFlyRight
 {
+    imageArrayBatFlyRight  = [[NSArray alloc] initWithObjects:
+                              [UIImage imageNamed:@"7.png"],
+                              [UIImage imageNamed:@"8.png"],
+                              [UIImage imageNamed:@"9.png"],
+                              nil];
+    
     batFly.animationImages = imageArrayBatFlyRight;
 	batFly.animationDuration = 0.5;
 	batFly.contentMode = UIViewContentModeBottomLeft;
 	[self.view addSubview:batFly];
 	[batFly startAnimating];
+    [imageArrayBatFlyRight release];
     
-    [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1.0/30.0];
-    [[UIAccelerometer sharedAccelerometer] setDelegate:self];
-    [batFly release];
 }
 
 - (void)didReceiveMemoryWarning
@@ -114,6 +129,11 @@
 {
     batFly = nil;
     [[UIAccelerometer sharedAccelerometer]setDelegate:nil];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft) || (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
 
 @end
