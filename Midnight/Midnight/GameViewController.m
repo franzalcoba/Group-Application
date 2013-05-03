@@ -36,68 +36,38 @@
     if (newX < 55 + bat_RADIUS)
         newX = 55 + bat_RADIUS;
     
+   
+    
     CGPoint newCenter = CGPointMake(newX, batFly.center.y);
     batFly.center = newCenter;
+    
+    if (valueX <= 0){
+        [batFly batFlyLeft];
+        [[self view] addSubview:batFly];
+        DLog(@"aw %d",newX);
+    } else {
+        [batFly batFlyRight];
+        [[self view] addSubview:batFly];
+        DLog(@"we");
+    }
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-	imageArrayBatFlyUpDown  = [[NSArray alloc] initWithObjects:
-                             [UIImage imageNamed:@"1.png"],
-                             [UIImage imageNamed:@"2.png"],
-                             [UIImage imageNamed:@"3.png"],
-                             nil];
-    imageArrayBatFlyLeft= [[NSArray alloc] initWithObjects:
-                               [UIImage imageNamed:@"4.png"],
-                               [UIImage imageNamed:@"5.png"],
-                               [UIImage imageNamed:@"6.png"],
-                               nil];
-    imageArrayBatFlyRight  = [[NSArray alloc] initWithObjects:
-                               [UIImage imageNamed:@"7.png"],
-                               [UIImage imageNamed:@"8.png"],
-                               [UIImage imageNamed:@"9.png"],
-                               nil];
     
-	batFly = [[UIImageView alloc] initWithFrame:
+	batFly = [[BatCharacter alloc] initWithFrame:
                              CGRectMake(100, 125, 150, 130)];
     
-    [self performSelector:@selector(batFlyRight) withObject:nil afterDelay:.50];
-    [self performSelector:@selector(batFlyLeft) withObject:nil afterDelay:1];
-    [self performSelector:@selector(batFlyUpDown) withObject:nil afterDelay:1.5];
-}
-
-- (void)batFlyUpDown
-{
-    batFly.animationImages = imageArrayBatFlyUpDown;
-	batFly.animationDuration = 0.5;
-	batFly.contentMode = UIViewContentModeBottomLeft;
-	[self.view addSubview:batFly];
-	[batFly startAnimating];
-}
-
-- (void)batFlyLeft
-{
-    batFly.animationImages = imageArrayBatFlyLeft;
-	batFly.animationDuration = 0.5;
-	batFly.contentMode = UIViewContentModeBottomLeft;
-	[self.view addSubview:batFly];
-	[batFly startAnimating];
-}
-
-- (void)batFlyRight
-{
-    batFly.animationImages = imageArrayBatFlyRight;
-	batFly.animationDuration = 0.5;
-	batFly.contentMode = UIViewContentModeBottomLeft;
-	[self.view addSubview:batFly];
-	[batFly startAnimating];
+    [batFly batFlyUpDown];
+    
+    [[self view] addSubview:batFly];
     
     [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1.0/30.0];
     [[UIAccelerometer sharedAccelerometer] setDelegate:self];
-    [batFly release];
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -113,6 +83,7 @@
 -(void)viewDidUnload
 {
     batFly = nil;
+    [batFly release];
     [[UIAccelerometer sharedAccelerometer]setDelegate:nil];
 }
 

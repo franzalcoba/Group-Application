@@ -7,14 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BatCharacter.h"
 
-@interface GameViewController : UIViewController
+@interface GameViewController : UIViewController <UIAccelerometerDelegate>
 {
-    NSArray * imageArrayBatFlyUpDown;
-    NSArray * imageArrayBatFlyRight;
-    NSArray * imageArrayBatFlyLeft;
-    
     float valueX;
-    UIImageView *batFly;
+    BatCharacter *batFly;
 }
+@property BOOL right;
+
 @end
